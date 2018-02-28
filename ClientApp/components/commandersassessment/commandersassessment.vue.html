@@ -1,0 +1,101 @@
+<template>
+    <div>
+        <h3>
+            <strong>Commander Assessment</strong>
+        </h3>
+        <div id="DetailsContentSection" class="row">
+
+            <div id="MicroDetails" class="row">
+                <div class="col-sm-3">
+                    <strong>Capability:</strong>
+                    <span>AAW - Anti-Air Warfare</span>
+                </div>
+                <div class="col-sm-3">
+                    <strong>Status:</strong>
+                    <span>Approved</span>
+                </div>
+                <div class="col-sm-3">
+                    <strong>Date Assessed:</strong>
+                    <span>26-Jan-2018</span>
+                </div>
+                <div class="col-sm-3">
+                    <strong>Standards Achieved:</strong>
+                    <span>7/8</span>
+                </div>
+            </div>
+            <hr />
+            <div id="Ratings" class="row">
+                <div id="CurrentRating" class="col-sm-6">
+                    <h4>
+                        <strong>Current Rating</strong>
+                    </h4>
+                    <v-btn-toggle v-model='current'>
+                        <v-btn flat dark color="success">Yes</v-btn>
+                        <v-btn flat dark color="warning">Qualified</v-btn>
+                        <v-btn flat dark color="error">No</v-btn>
+                    </v-btn-toggle>
+                </div>
+                <div id="NextRating" class="col-sm-6">
+                    <h4>
+                        <strong>Next Rating</strong>
+                    </h4>
+                    <v-btn-toggle v-model='nextrating'>
+                        <v-btn flat dark color="success">Yes</v-btn>
+                        <v-btn flat dark color="warning">Qualified</v-btn>
+                        <v-btn flat dark color="error">No</v-btn>
+                    </v-btn-toggle>
+                </div>
+            </div>
+            <hr />
+
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#CollapseCDRComments">
+                            <h4 class="panel-title">
+                                <span class="fa fa-angle-double-down pull-right">
+                                </span>Comments
+                            </h4>
+                        </a>
+                    </div>
+                    <div id="CollapseCDRComments" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <form>
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <label for="Personnel">Personnel</label>
+                                        <textarea class="form-control" id="Personnel" rows="3"></textarea>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="Equipment">Equipment</label>
+                                        <textarea class="form-control" id="Equipment" rows="3"></textarea>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="Supply">Supply</label>
+                                        <textarea class="form-control" id="Supply" rows="3"></textarea>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="Training">Training</label>
+                                        <textarea class="form-control" id="Training" rows="3"></textarea>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="Ordinance">Ordinance</label>
+                                        <textarea class="form-control" id="Ordinance" rows="3"></textarea>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="Facility">Facility</label>
+                                        <textarea class="form-control" id="Facility" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</template>
+
+
+<script src="./commandersassessment.ts"></script>

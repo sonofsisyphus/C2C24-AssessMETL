@@ -1,0 +1,134 @@
+<template>
+    <div>
+        
+        <h2>SORTS</h2>
+
+       <pesto></pesto> 
+
+        <div id="OarsSection">
+            <div class="container-fluid">
+                <div id="DetailsHeader" class="row">
+                    <div id="DetailHeaderTitle" class="col-sm-12">
+                        <h3>
+                            <strong>SORTS Data</strong>
+                        </h3>
+                    </div>
+                </div>
+                <div id="OarsData">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h4>Activity Category:</h4>
+                            <p>{{sorts.category}} </p>
+                        </div>
+                        <div class="col-sm-4">
+                            <h4>Activity Code:</h4>
+                            <p>{{sorts.code}} </p>
+                        </div>
+                        <div class="col-sm-4">
+                            <h4>Deployed Status:</h4>
+                            <p>{{sorts.status}}</p>
+                        </div>
+                    </div>
+                    <hr />
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h4>Organization:</h4>
+                            <p>Embarked/UIC: </p>
+                            <span>{{sorts.embarked}}</span>
+                            <br />
+                            <p>Percent Effective: </p>
+                            <span>{{sorts.effectivity}}</span>
+                            <br />
+                            <p>Category Level: </p>
+                            <span>{{sorts.level}}</span>
+                            <br />
+                            <p>Limitation: </p>
+                            <span>{{sorts.limitation}}</span>
+                            <br />
+                            <p>ADCON: </p>
+                            <span>{{sorts.adcon}}</span>
+                            <br />
+                            <p>OPCON: </p>
+                            <span>{{sorts.opcon}}</span>
+                        </div>
+                        <div class="col-sm-4">
+                            <h4>Location:</h4>
+                            <p>Lat: </p>
+                            <span>{{sorts.latitude}}</span>
+                            <br />
+                            <p>Long: </p>
+                            <span>{{sorts.longitude}}</span>
+                        </div>
+                        <div class="col-sm-4">
+                            <h4>Chem Bio Defense:</h4>
+                            <p>Current Rate/Reason: </p>
+                            <span>{{sorts.cbrCurrent}}</span>
+                            <br />
+                            <p>Projected Rate/Date: </p>
+                            <span>{{sorts.cbrProjected}}</span>
+                            <br />
+                            <p>Supply Rate/Reason: </p>
+                            <span>C2/YES</span>
+                            <br />
+                            <p>Training Rate/Reason: </p>
+                            <span>{{sorts.cbrTraining}}</span>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4>Personnel Strength</h4>
+                            <table class="table table-bordered table-responsive isiuxTable">
+                                <thead>
+                                    <tr class="isiuxTableHeader">
+                                        <th>Type</th>
+                                        <th>Structured (BA)</th>
+                                        <th>Authorized (BA)</th>
+                                        <th>Assigned (BA)</th>
+                                        <th>Possessed (COB)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="isiuxTableAlternateRow">
+                                    <tr>
+                                        <td>NC</td>
+                                        <td>12345</td>
+                                        <td>12345</td>
+                                        <td>12345</td>
+                                        <td>12345</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NE</td>
+                                        <td>12345</td>
+                                        <td>12345</td>
+                                        <td>12345</td>
+                                        <td>12345</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NW</td>
+                                        <td>12345</td>
+                                        <td>12345</td>
+                                        <td>12345</td>
+                                        <td>12345</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TW</td>
+                                        <td>12345</td>
+                                        <td>12345</td>
+                                        <td>12345</td>
+                                        <td>12345</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</template>
+
+
+<script src="./core.ts"></script>

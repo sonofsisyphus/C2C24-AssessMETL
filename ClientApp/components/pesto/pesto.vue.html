@@ -1,0 +1,50 @@
+<template>
+<v-container grid-list-xs >
+    <v-layout row >
+        <v-flex xs6 v-for="pillar in pillars" :key="`1${pillar.id}`">
+       
+            <v-chip :color=chipColor(pillar.value) :text-color=chipTextColor(pillar.value)>
+                <v-avatar :class=avatarColor(pillar.value)>{{pillar.value}}</v-avatar>
+                {{pillar.name}}
+            </v-chip>
+    
+    </v-flex>
+    </v-layout>
+    </v-container>
+        <!--div class="text-xs-center" >
+ 
+                    <v-chip :color=chipColor(personnel) :text-color=chipTextColor(personnel)>
+                        <v-avatar :class=avatarColor(personnel)>{{personnel}}</v-avatar>
+                        Personnel
+                    </v-chip>
+                    <v-chip :color=chipColor(equipment) :text-color=chipTextColor(equipment)>
+                        <v-avatar :class=avatarColor(equipment)>{{equipment}}</v-avatar>
+                        Equipment
+                    </v-chip>
+                    <v-chip :color=chipColor(supply) :text-color=chipTextColor(supply)>
+                        <v-avatar :class=avatarColor(supply)>{{supply}}</v-avatar>
+                        Supply
+                    </v-chip>
+                    <v-chip :color=chipColor(training) :text-color=chipTextColor(training)>
+                        <v-avatar :class=avatarColor(training)>{{training}}</v-avatar>
+                        Training
+                    </v-chip>
+                    <v-chip :color=chipColor(ordnance) :text-color=chipTextColor(ordnance)>
+                        <v-avatar :class=avatarColor(ordnance)>{{ordnance}}</v-avatar>
+                        Ordnance
+                    </v-chip>
+                    <v-chip :color=chipColor(facilities) :text-color=chipTextColor(facilities)>
+                        <v-avatar :class=avatarColor(facilities)>{{facilities}}</v-avatar>
+                        Facilities
+                    </v-chip>
+                    <v-chip :color=chipColor(overall) :text-color=chipTextColor(overall)>
+                        <v-avatar :class=avatarColor(overall)>{{overall}}</v-avatar>
+                        Overall
+                    </v-chip>
+
+        </div-->
+
+
+</template>
+
+<script src="./pesto.ts"></script>

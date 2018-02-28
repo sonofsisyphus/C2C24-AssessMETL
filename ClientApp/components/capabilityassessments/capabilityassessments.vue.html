@@ -1,0 +1,294 @@
+<template>
+    <div>
+        <div id="DetailsSection">
+            <div class="container-fluid">
+                <div id="DetailsContentSection" class="row">
+                    <div id="DetailsContentSectionLeft" class="col-sm-4">
+                        <v-flex>
+                            <v-card>
+                                <v-toolbar>
+                                    <v-toolbar-side-icon></v-toolbar-side-icon>
+                                    <v-toolbar-title>Capabilities</v-toolbar-title>
+                                    <v-spacer></v-spacer>
+
+                                    <v-btn icon>
+                                        <v-icon>search</v-icon>
+                                    </v-btn>
+                                    <v-btn icon>
+                                        <v-icon>more_vert</v-icon>
+                                    </v-btn>
+                                </v-toolbar>
+                                <v-list two-line subheader>
+                                    <v-list-group v-model="capability.active" v-for="capability in capabilities" :key="capability.name" prepend-icon="folder" color="green">
+                                        <v-list-tile slot="activator">
+                                            <v-list-tile-content>
+                                                <v-list-tile-title>{{ capability.name }}</v-list-tile-title>
+                                                <v-list-tile-sub-title>{{capability.assessed}}</v-list-tile-sub-title>
+                                            </v-list-tile-content>
+                                        </v-list-tile>
+                                        <v-list-tile v-for="met in capability.metAssessments" :key="met.abbreviation" @click="">
+                                            <v-list-tile-content>
+                                                <v-list-tile-title>{{ met.name }}</v-list-tile-title>
+                                                <v-list-tile-sub-title>met.assessmentDate</v-list-tile-sub-title>
+                                            </v-list-tile-content>
+                                            <v-list-tile-action>
+                                                <met></met>
+                                            </v-list-tile-action>
+                                        </v-list-tile>
+                                    </v-list-group>
+                                </v-list>
+                            </v-card>
+                        </v-flex>
+
+                    </div>
+
+                    <div id="DetailsContentSectionRight" class="col-sm-8">
+                        <div id="DetailsPesto" class="row">
+                            <pesto></pesto>
+                        </div>
+
+                        <hr />
+
+                        <div id="MicroDetails" class="row">
+                            <div class="col-sm-3">
+                                <strong>Capability:</strong>
+                                <span>AAW - Anti-Air Warfare</span>
+                            </div>
+                            <div class="col-sm-3">
+                                <strong>Status:</strong>
+                                <span>Approved</span>
+                            </div>
+                            <div class="col-sm-3">
+                                <strong>Date Assessed:</strong>
+                                <span>26-Jan-2018</span>
+                            </div>
+                            <div class="col-sm-3">
+                                <strong>Standards Achieved:</strong>
+                                <span>7/8</span>
+                            </div>
+                        </div>
+                        <hr />
+
+                        <div id="Ratings" class="row">
+                            <div id="CurrentRating" class="col-sm-6">
+                                <h4>
+                                    <strong>Current Rating</strong>
+                                </h4>
+                                <v-btn-toggle v-model="current">
+                                    <v-btn flat dark color="success">Yes</v-btn>
+                                    <v-btn flat dark color="warning">Qualified</v-btn>
+                                    <v-btn flat dark color="error">No</v-btn>
+                                </v-btn-toggle>
+                            </div>
+                            <div id="NextRating" class="col-sm-6">
+                                <h4>
+                                    <strong>Next Rating</strong>
+                                </h4>
+                                <v-btn-toggle v-model="current">
+                                    <v-btn flat dark color="success">Yes</v-btn>
+                                    <v-btn flat dark color="warning">Qualified</v-btn>
+                                    <v-btn flat dark color="error">No</v-btn>
+                                </v-btn-toggle>
+                            </div>
+                        </div>
+                        <hr />
+
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                        <h4 class="panel-title">
+
+                                            <span class="fa fa-angle-double-down pull-right">
+                                            </span>Comments
+                                        </h4>
+                                    </a>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <div class="col-sm-6">
+                                                    <label for="Personnel">Personnel</label>
+                                                    <textarea class="form-control" id="Personnel" rows="3"></textarea>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label for="Equipment">Equipment</label>
+                                                    <textarea class="form-control" id="Equipment" rows="3"></textarea>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label for="Supply">Supply</label>
+                                                    <textarea class="form-control" id="Supply" rows="3"></textarea>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label for="Training">Training</label>
+                                                    <textarea class="form-control" id="Training" rows="3"></textarea>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label for="Ordinance">Ordinance</label>
+                                                    <textarea class="form-control" id="Ordinance" rows="3"></textarea>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label for="Facility">Facility</label>
+                                                    <textarea class="form-control" id="Facility" rows="3"></textarea>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="Standards" class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                        <h4 class="panel-title">
+                                            <span class="fa fa-angle-double-down pull-right">
+                                            </span>Standards
+                                        </h4>
+                                    </a>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <table class="table table-bordered table-responsive">
+                                            <thead>
+                                                <tr class="isiuxTableHeader">
+                                                    <th scope="col">Performance Measure</th>
+                                                    <th scope="col">Scale</th>
+                                                    <th scope="col">Criterion</th>
+                                                    <th scope="col">Assessed Value</th>
+                                                    <th scope="col">Observed Value</th>
+                                                    <th scope="col">Observed Date</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td width="30%">Of required transportation assets, represented by planned transportation
+                                                        assets, in TPFDD for current operation.</td>
+                                                    <td class="scale">Percent</td>
+                                                    <td class="criterion">> 90</td>
+                                                    <td>
+                                                        <input class="form-control" type="text" name="AssessedValue" id="AssessedValue">
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control" type="text" name="ObservedValue" id="ObservedValue">
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control" type="text" name="ObservedDate" id="ObservedDate">
+                                                    </td>
+                                                    <td class="status">Achieved</td>
+                                                    <td>
+                                                        <span class="fa text-danger fa-close" aria-hidden="true"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="30%">Of required transportation assets, represented by planned transportation
+                                                        assets, in TPFDD for current operation.</td>
+                                                    <td class="scale">Percent</td>
+                                                    <td class="criterion">> 90</td>
+                                                    <td>
+                                                        <input class="form-control" type="text" name="AssessedValue" id="AssessedValue">
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control" type="text" name="ObservedValue" id="ObservedValue">
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control" type="text" name="ObservedDate" id="ObservedDate">
+                                                    </td>
+                                                    <td class="status">Achieved</td>
+                                                    <td>
+                                                        <span class="fa text-danger fa-close" aria-hidden="true"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="30%">Of required transportation assets, represented by planned transportation
+                                                        assets, in TPFDD for current operation.</td>
+                                                    <td class="scale">Percent</td>
+                                                    <td class="criterion">> 90</td>
+                                                    <td>
+                                                        <input class="form-control" type="text" name="AssessedValue" id="AssessedValue">
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control" type="text" name="ObservedValue" id="ObservedValue">
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control" type="text" name="ObservedDate" id="ObservedDate">
+                                                    </td>
+                                                    <td class="status">Achieved</td>
+                                                    <td>
+                                                        <span class="fa text-danger fa-close" aria-hidden="true"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="30%">Rate of Movement.</td>
+                                                    <td class="scale">Knots</td>
+                                                    <td class="criterion">= 80</td>
+                                                    <td>
+                                                        <input class="form-control" type="text" name="AssessedValue" id="AssessedValue">
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control" type="text" name="ObservedValue" id="ObservedValue">
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control" type="text" name="ObservedDate" id="ObservedDate">
+                                                    </td>
+                                                    <td class="status">Achieved</td>
+                                                    <td>
+                                                        <span class="fa text-danger fa-close" aria-hidden="true"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="30%">Rate of Movement.</td>
+                                                    <td class="scale">Knots</td>
+                                                    <td class="criterion">= 80</td>
+                                                    <td>
+                                                        <input class="form-control" type="text" name="AssessedValue" id="AssessedValue">
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control" type="text" name="ObservedValue" id="ObservedValue">
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control" type="text" name="ObservedDate" id="ObservedDate">
+                                                    </td>
+                                                    <td class="status">Achieved</td>
+                                                    <td>
+                                                        <span class="fa text-danger fa-close" aria-hidden="true"></span>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="Conditions" class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+
+                                        <h4 class="panel-title">
+                                            <span class="fa fa-angle-double-down pull-right">
+                                            </span>Conditions
+                                        </h4>
+                                    </a>
+                                </div>
+                                <div id="collapseThree" class="panel-collapse collapse ">
+                                    <div class="panel-body">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</template>
+
+
+<script src="./capabilityassessments.ts"></script>

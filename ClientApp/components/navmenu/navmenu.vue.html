@@ -1,0 +1,39 @@
+<template>
+    <div class="main-nav">
+        <div class="navbar navbar-inverse">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">new_project</a>
+            </div>
+            <div class="clearfix"></div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <router-link to="/" :exact="true">
+                            <span class="glyphicon glyphicon-home"></span> Commanders Assessment
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link to="/capabilities">
+                            <span class="glyphicon glyphicon-tasks"></span> Capabilities
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link to="/sorts">
+                            <span class="glyphicon glyphicon-tasks"></span> SORTS
+                        </router-link>
+                    </li>
+              </ul>
+            </div>
+        </div>
+    </div>
+</template>
+
+<style src="./navmenu.css" />
+
+<script src="../home/home.ts"></script>

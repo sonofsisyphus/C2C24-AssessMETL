@@ -1,0 +1,113 @@
+<template>
+<v-container grid-list-md text-xs-center>
+    <v-layout row wrap>
+        <v-flex xs1 >
+            <v-card dark color="primary">
+                <v-card-text class="px-0">Abbr</v-card-text>
+            </v-card>
+        </v-flex>
+        <v-flex xs3 >
+            <v-card dark color="primary">
+                <v-card-text class="px-0">Description</v-card-text>
+            </v-card>
+        </v-flex>
+        <v-flex xs1 >
+            <v-card dark color="primary">
+                <v-card-text class="px-0">Personnel</v-card-text>
+            </v-card>
+        </v-flex>
+        <v-flex xs1 >
+            <v-card dark color="primary">
+                <v-card-text class="px-0">Equipment</v-card-text>
+            </v-card>
+        </v-flex>
+        <v-flex xs1 >
+            <v-card dark color="primary">
+                <v-card-text class="px-0">Supply</v-card-text>
+            </v-card>
+        </v-flex>
+        <v-flex xs1 >
+            <v-card dark color="primary">
+                <v-card-text class="px-0">Training</v-card-text>
+            </v-card>
+        </v-flex>
+        <v-flex xs1 >
+            <v-card dark color="primary">
+                <v-card-text class="px-0">Ordnance</v-card-text>
+            </v-card>
+        </v-flex>
+        <v-flex xs1 >
+            <v-card dark color="primary">
+                <v-card-text class="px-0">Computed</v-card-text>
+            </v-card>
+        </v-flex>
+        <v-flex xs1 >
+            <v-card dark color="primary">
+                <v-card-text class="px-0">Date</v-card-text>
+            </v-card>
+        </v-flex>
+        <v-flex xs1 >
+            <v-card dark color="primary">
+                <v-card-text class="px-0">CDR</v-card-text>
+            </v-card>
+        </v-flex>
+    </v-layout>
+    <v-layout row wrap v-for="capability in capabilities">
+
+        <v-flex xs1 >
+            <v-card >
+                <v-btn flat small>{{capability.abbreviation}}</v-btn>
+            </v-card>
+        </v-flex>
+        <v-flex xs3 >
+            <v-card >
+                <v-btn flat small>{{capability.description}}</v-btn>
+            </v-card>
+        </v-flex>
+        <v-flex xs1 >
+            <v-card  :color=chipColor(capability.personnel) >
+                
+                <v-btn flat small :color=chipTextColor(capability.personnel)>{{capability.personnel}}</v-btn>
+            </v-card>
+        </v-flex>
+        <v-flex xs1 >
+            <v-card :color=chipColor(capability.equipment) >
+                <v-btn flat small :color=chipTextColor(capability.equipment)>{{capability.equipment}}</v-btn>
+            </v-card>
+        </v-flex>
+        <v-flex xs1 >
+            <v-card :color=chipColor(capability.supply) >
+                <v-btn flat small :color=chipTextColor(capability.supply)>{{capability.supply}}</v-btn>
+            </v-card>
+        </v-flex>
+        <v-flex xs1 >
+            <v-card :color=chipColor(capability.training) >
+                <v-btn flat small :color=chipTextColor(capability.training)>{{capability.training}}</v-btn>
+            </v-card>
+        </v-flex >
+        <v-flex xs1 >
+            <v-card :color=chipColor(capability.ordnance) >
+                <v-btn flat small :color=chipTextColor(capability.ordnance)>{{capability.ordnance}}</v-btn>
+            </v-card>
+        </v-flex>
+        <v-flex xs1 >
+            <v-card :color=chipColor(capability.overall) >
+                <v-btn flat small :color=chipTextColor(capability.overall)>{{capability.overall}}</v-btn>
+            </v-card>
+        </v-flex>
+        <v-flex xs1 >
+            <v-card >
+                <v-btn flat small></v-btn>
+            </v-card>
+        </v-flex>
+        <v-flex xs1 >
+            <v-card >
+                <v-btn flat small></v-btn>
+            </v-card>
+
+        </v-flex>
+    </v-layout>
+</v-container>
+</template>
+
+<script src="./capabilities.ts"></script>
