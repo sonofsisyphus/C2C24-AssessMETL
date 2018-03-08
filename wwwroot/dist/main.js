@@ -5889,7 +5889,7 @@ var CapabilitiesComponent = (function (_super) {
     }
     CapabilitiesComponent.prototype.mounted = function () {
         var _this = this;
-        fetch('http://localhost:52777/api/capabilityAssessments')
+      fetch('http://assessmentsvc/api/capabilityAssessments')
             .then(function (response) { return response.json(); })
             .then(function (data) { _this.capabilities = data; });
     };
@@ -5985,7 +5985,7 @@ var CapabilityAssessmentsComponent = (function (_super) {
     };
     CapabilityAssessmentsComponent.prototype.mounted = function () {
         var _this = this;
-        fetch('http://localhost:52777/api/capabilityAssessments')
+      fetch('http://assessmentsvc/api/capabilityAssessments')
             .then(function (response) { return response.json(); })
             .then(function (data) { _this.capabilities = data; });
     };
@@ -6083,7 +6083,7 @@ var SortsComponent = (function (_super) {
     };
     SortsComponent.prototype.mounted = function () {
         var _this = this;
-        fetch('http://localhost:52777/api/Sorts')
+      fetch('http://assessmentsvc/api/Sorts')
             .then(function (response) { return response.json(); })
             .then(function (data) { _this.sorts = data.shift(); });
     };
@@ -6149,7 +6149,7 @@ var HomeComponent = (function (_super) {
     };
     HomeComponent.prototype.mounted = function () {
         var _this = this;
-        fetch('http://localhost:52778/api/units')
+      fetch('http://assessmentsvc/api/units')
             .then(function (response) { return response.json(); })
             .then(function (data) { _this.units = data; });
     };

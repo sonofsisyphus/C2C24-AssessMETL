@@ -49,7 +49,7 @@ export default class CapabilityAssessmentsComponent extends Vue {
     }
     mounted() {
  
-        fetch('http://localhost:52777/api/capabilityAssessments')
+        fetch('http://assessmentsvc/api/capabilityAssessments')
             .then(response => response.json() as Promise<Capabilities[]>)
             .then(data => { this.capabilities = data; });
     }

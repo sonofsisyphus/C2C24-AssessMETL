@@ -46,7 +46,7 @@ export default class SortsComponent extends Vue {
         }
     }
     mounted() {
-        fetch('http://localhost:52777/api/Sorts')
+        fetch('http://assessmentsvc/api/Sorts')
             .then(response => response.json() as Promise<Oars[]>)
             .then(data => { this.sorts = data.shift()});
     }
