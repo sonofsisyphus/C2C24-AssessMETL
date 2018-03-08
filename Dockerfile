@@ -17,4 +17,4 @@ RUN dotnet publish -c Release -o /pub
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /pub .
-ENTRYPOINT ["dotnet", "assessmetl.dll"]
+ENTRYPOINT ["dotnet", "AssessMETL.dll"]
