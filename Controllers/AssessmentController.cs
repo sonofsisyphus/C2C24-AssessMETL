@@ -2,8 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.Serialization.Json;
 
 namespace AssessMETL.Controllers
 {
@@ -12,37 +16,31 @@ namespace AssessMETL.Controllers
     public class AssessmentController : Controller
     {
         [HttpGet("[action]")]
-        public IEnumerable<CapabilityAssessment> CapabilityAssessments()
+        public async Task<IEnumerable<CapabilityAssessment>> CapabilityAssessments()
         {
-            IEnumerable<CapabilityAssessment> assessments = null;
-            HttpResponseMessage response = await client.GetAsync(assessmentsvc/api/capabilityAssessments);
-            if (response.IsSuccessStatusCode)
-            {
-                assessments = await response.Content.ReadAsAsync<CapabilityAssessment>();
-            }
+            HttpClient client = new HttpClient();
+            var streamTask = client.GetStreamAsync("assessmentsvc/api/capabilityAssessments");
+            var serializer = new DataContractJsonSerializer(typeof(List<CapabilityAssessment>));
+            var assessments = serializer.ReadObject(await streamTask) as List<CapabilityAssessment>;
             return assessments;
          }
         [HttpGet("[action]")]
-        public IEnumerable<Sorts> Sorts()
+        public async Task<IEnumerable<Sorts>> Sorts()
         {
-            IEnumerable<Sorts> sortsassessments = null;
-            HttpResponseMessage response = await client.GetAsync(assessmentsvc/api/Sorts);
-            if (response.IsSuccessStatusCode)
-            {
-                sortsassessments = await response.Content.ReadAsAsync<Sorts>();
-            }
+            HttpClient client = new HttpClient();
+            var streamTask = client.GetStreamAsync("assessmentsvc/api/Sorts");
+            var serializer = new DataContractJsonSerializer(typeof(List<Sorts>));
+            var sortsassessments = serializer.ReadObject(await streamTask) as List<Sorts>;
             return sortsassessments;
 
         }
         [HttpGet("[action]")]
-        public IEnumerable<Unit> Units()
+        public async Task<IEnumerable<Unit>> Units()
         {
-            IEnumerable<Unit> units = null;
-            HttpResponseMessage response = await client.GetAsync(assessmentsvc/api/Units);
-            if (response.IsSuccessStatusCode)
-            {
-                units = await response.Content.ReadAsAsync<Unit>();
-            }
+            HttpClient client = new HttpClient();
+            var streamTask = client.GetStreamAsync("assessmentsvc/api/Units");
+            var serializer = new DataContractJsonSerializer(typeof(List<Unit>));
+            var units = serializer.ReadObject(await streamTask) as List<Unit>;
             return units;
 
         }
@@ -100,4 +98,25 @@ namespace AssessMETL.Controllers
         public string Name { get; set; }
 
     }
+       public class METAssessment 
+    {
+        public Guid CapabilityAssessmentId { get; set; }
+        public Guid METAssessmentId { get; set; }
+        public string Description { get; set; }
+        public string Abbreviation { get; set; }
+        public string Name { get; set; }
+        public string Status { get; set; }
+        public DateTime Assessed { get; set; }
+        public string Achieved { get; set; }
+        public string Current { get; set; }
+        public string Next { get; set; }
+        public int Personnel { get; set; }
+        public int Equipment { get; set; }
+        public int Supply { get; set; }
+        public int Training { get; set; }
+        public int Ordnance { get; set; }
+        public int Overall { get; set; }
+
+    }
+
 }
