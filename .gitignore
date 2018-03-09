@@ -221,3 +221,4 @@ packages/
 
 # Logs Folder
 builds
+obj/Debug/netcoreapp2.0/AssessMETL.csproj.CoreCompileInputs.cache
