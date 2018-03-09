@@ -26,7 +26,7 @@ export default class CapabilitiesComponent extends Vue {
     capabilities: Capability[] = [];
     mounted() {
 
-        fetch('http://assessmentsvc:8080/api/capabilityAssessments')
+        fetch('/api/capabilityAssessments')
             .then(response => response.json() as Promise<Capability[]>)
             .then(data => { this.capabilities = data; });
     }
