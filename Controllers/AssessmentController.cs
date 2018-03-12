@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.Serialization.Json;
-
+using Newtonsoft.Json;
 namespace AssessMETL.Controllers
 {
     [Produces("application/json")]
@@ -19,18 +20,23 @@ namespace AssessMETL.Controllers
         public async Task<IEnumerable<CapabilityAssessment>> CapabilityAssessments()
         {
             HttpClient client = new HttpClient();
-            var streamTask = client.GetStreamAsync("assessmentsvc/api/capabilityAssessments");
-            var serializer = new DataContractJsonSerializer(typeof(List<CapabilityAssessment>));
-            var assessments = serializer.ReadObject(await streamTask) as List<CapabilityAssessment>;
+            var stream = await client.GetStreamAsync("assessmentsvc/api/capabilityAssessments");
+            StreamReader  streamReader =  new StreamReader(stream);
+            var jsonReader = new JsonTextReader(streamReader);
+            var serializer = new JsonSerializer();
+            var assessments =  serializer.Deserialize<List<CapabilityAssessment>>(jsonReader);
+            
             return assessments;
          }
         [HttpGet("[action]")]
         public async Task<IEnumerable<Sorts>> Sorts()
         {
             HttpClient client = new HttpClient();
-            var streamTask = client.GetStreamAsync("assessmentsvc/api/Sorts");
-            var serializer = new DataContractJsonSerializer(typeof(List<Sorts>));
-            var sortsassessments = serializer.ReadObject(await streamTask) as List<Sorts>;
+            var stream = await client.GetStreamAsync("assessmentsvc/api/Sorts");
+            StreamReader  streamReader =  new StreamReader(stream);
+            var jsonReader = new JsonTextReader(streamReader);
+            var serializer = new JsonSerializer();
+            var sortsassessments =  serializer.Deserialize<List<Sorts>>(jsonReader);
             return sortsassessments;
 
         }
@@ -38,9 +44,11 @@ namespace AssessMETL.Controllers
         public async Task<IEnumerable<Unit>> Units()
         {
             HttpClient client = new HttpClient();
-            var streamTask = client.GetStreamAsync("assessmentsvc/api/Units");
-            var serializer = new DataContractJsonSerializer(typeof(List<Unit>));
-            var units = serializer.ReadObject(await streamTask) as List<Unit>;
+            var stream = await client.GetStreamAsync("assessmentsvc/api/Units");
+            StreamReader  streamReader =  new StreamReader(stream);
+            var jsonReader = new JsonTextReader(streamReader);
+            var serializer = new JsonSerializer();
+            var units =  serializer.Deserialize<List<Unit>>(jsonReader);
             return units;
 
         }

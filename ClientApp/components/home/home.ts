@@ -19,7 +19,7 @@ export default class HomeComponent extends Vue {
         };
     }
     mounted() {
-        fetch('/api/units')
+        fetch('/api/Assessment/Units')
             .then(response => response.json() as Promise<Unit[]>)
             .then(data => { this.units = data; });
     }
