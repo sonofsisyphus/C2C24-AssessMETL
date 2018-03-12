@@ -20,7 +20,7 @@ namespace AssessMETL.Controllers
         public async Task<IEnumerable<CapabilityAssessment>> CapabilityAssessments()
         {
             HttpClient client = new HttpClient();
-            var stream = await client.GetStreamAsync("assessmentsvc/api/capabilityAssessments");
+            var stream = await client.GetStreamAsync("http://assessmentsvc/api/capabilityAssessments");
             StreamReader  streamReader =  new StreamReader(stream);
             var jsonReader = new JsonTextReader(streamReader);
             var serializer = new JsonSerializer();
@@ -32,7 +32,7 @@ namespace AssessMETL.Controllers
         public async Task<IEnumerable<Sorts>> Sorts()
         {
             HttpClient client = new HttpClient();
-            var stream = await client.GetStreamAsync("assessmentsvc/api/Sorts");
+            var stream = await client.GetStreamAsync("http://assessmentsvc/api/Sorts");
             StreamReader  streamReader =  new StreamReader(stream);
             var jsonReader = new JsonTextReader(streamReader);
             var serializer = new JsonSerializer();
@@ -44,7 +44,7 @@ namespace AssessMETL.Controllers
         public async Task<IEnumerable<Unit>> Units()
         {
             HttpClient client = new HttpClient();
-            var stream = await client.GetStreamAsync("assessmentsvc/api/Units");
+            var stream = await client.GetStreamAsync("http://assessmentsvc/api/Units");
             StreamReader  streamReader =  new StreamReader(stream);
             var jsonReader = new JsonTextReader(streamReader);
             var serializer = new JsonSerializer();
