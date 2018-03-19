@@ -18,6 +18,7 @@ RUN dotnet publish -c Release -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
+RUN groupadd -g 1001 drrsnuser
 RUN useradd -r -u 1001 -g drrsnuser drrsnuser
 USER drrsnuser
 ENTRYPOINT ["dotnet", "AssessMETL.dll"]
