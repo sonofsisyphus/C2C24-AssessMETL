@@ -1,0 +1,34 @@
+<template>
+   
+    <v-dialog v-model="settings" persistent max-width="290" >
+        <v-btn icon ripple slot="activator">
+                <v-icon>more_vert</v-icon>
+        </v-btn>
+        <v-card>
+            <v-toolbar dark color="primary">
+                <v-btn icon @click.native="settings = false" dark>
+                    <v-icon>close</v-icon>
+                </v-btn>
+                <v-toolbar-title>Settings</v-toolbar-title>
+                <v-spacer></v-spacer>
+                <v-toolbar-items>
+                    <v-btn dark flat @click.native='toggledark()'>Save</v-btn>
+                </v-toolbar-items>
+            </v-toolbar>
+            <v-list three-line subheader>
+                <v-subheader>General</v-subheader>
+                <v-list-tile avatar>
+                    <v-list-tile-action>
+                        <v-switch v-model="darkness"></v-switch>
+                    </v-list-tile-action>
+                    <v-list-tile-content>
+                        <v-list-tile-title>{{`Dark Theme: ${darkness ? 'On':'Off'}`}}</v-list-tile-title>
+                    </v-list-tile-content>
+                </v-list-tile>
+            </v-list>
+        </v-card>
+    </v-dialog>
+</v-layout>
+</template>
+
+<script src="./settings.ts"></script>

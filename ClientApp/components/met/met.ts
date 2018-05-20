@@ -4,12 +4,10 @@ import { Component } from 'vue-property-decorator';
 
 @Component
 
-export default class AppComponent extends Vue {
-    dialog: boolean = false;
-    notifications : boolean = false;
-    sound: boolean = true;
-    widgets: boolean = false;
+export default class MetComponent extends Vue {
     overall:string = "";
+ 
+    met: Boolean =   false;
 
     chipcolor(){
         var col = "";

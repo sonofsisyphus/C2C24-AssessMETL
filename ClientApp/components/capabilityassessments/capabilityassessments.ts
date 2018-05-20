@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 
-import HomeComponent from '../home/home';
+
 interface Unit {
     uic: string;
     name: string;
@@ -44,9 +44,7 @@ interface Capabilities {
 
 export default class CapabilityAssessmentsComponent extends Vue {
     capabilities: Capabilities[] = [];
-    components(){
-        HomeComponent
-    }
+
     mounted() {
  
         fetch('/api/Assessment/CapabilityAssessments')
