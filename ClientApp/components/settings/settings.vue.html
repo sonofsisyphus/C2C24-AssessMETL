@@ -1,7 +1,7 @@
 <template>
    
-    <v-dialog v-model="settings" persistent max-width="290" >
-        <v-btn icon ripple slot="activator">
+    <v-dialog persistent max-width="290" v-model="settings">
+<v-btn icon ripple slot="activator" @click.native="darkness = original_setting">
                 <v-icon>more_vert</v-icon>
         </v-btn>
         <v-card>

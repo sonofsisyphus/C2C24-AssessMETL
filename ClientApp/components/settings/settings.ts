@@ -1,24 +1,22 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 
-const AppProps = Vue.extend({
-    
-    props: {
-        dark: Boolean
-    }
-})
+
 
 @Component
 
-export default class SettingsComponent extends AppProps {
+export default class SettingsComponent extends Vue {
  
     
-    darkness: Boolean = this.dark
-    settings: Boolean = false
+    darkness: Boolean = true;
+    original_setting: Boolean = this.darkness;
+    settings: Boolean = false;
 
     toggledark(){
-        this.$emit('toggletheme',this.darkness)
         this.settings = false
+        this.original_setting = this.darkness
+        this.$emit('toggletheme',this.darkness)
+        
     }
  
 }
