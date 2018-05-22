@@ -1,7 +1,7 @@
 {
   "name": "AssessMETL",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.1",
   "devDependencies": {
     "@types/webpack-env": "^1.13.0",
     "aspnet-webpack": "^2.0.1",

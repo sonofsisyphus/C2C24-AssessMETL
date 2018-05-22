@@ -1,63 +1,44 @@
 
 <template>
     <v-layout row justify-center>
-      <v-dialog v-model="met" persistent max-width="500px">
-        <v-btn icon ripple slot="activator">
-            <v-chip color="green darken-4" text-color="white">
-                Y
-            </v-chip>
-          </v-btn>
+      <v-dialog v-model="met"  max-width="1600px">
+        <v-btn icon ripple slot="activator" >
+            <v-chip :color=chipColor(metassessment.overall) :text-color=chipTextColor(metassessment.overall)>
+              <v-avatar :class=avatarColor(metassessment.overall)>{{getletter(metassessment.overall)}}</v-avatar>
+          </v-chip>
+        </v-btn>
         <v-card>
           <v-card-title>
-            <span class="headline">User Profile</span>
+            <span class="headline">{{metassessment.description}} : {{metassessment.abbreviation}}</span>
           </v-card-title>
-          <v-card-text>
-            <v-container grid-list-md>
-              <v-layout wrap>
-                <v-flex xs12 sm6 md4>
-                  <v-text-field label="Legal first name" required></v-text-field>
-                </v-flex>
-                <v-flex xs12 sm6 md4>
-                  <v-text-field label="Legal middle name" hint="example of helper text only on focus"></v-text-field>
-                </v-flex>
-                <v-flex xs12 sm6 md4>
-                  <v-text-field
-                    label="Legal last name"
-                    hint="example of persistent helper text"
-                    persistent-hint
-                    required
-                  ></v-text-field>
-                </v-flex>
-                <v-flex xs12>
-                  <v-text-field label="Email" required></v-text-field>
-                </v-flex>
-                <v-flex xs12>
-                  <v-text-field label="Password" type="password" required></v-text-field>
-                </v-flex>
-                <v-flex xs12 sm6>
-                  <v-select
-                    :items="['0-17', '18-29', '30-54', '54+']"
-                    label="Age"
-                    required
-                  ></v-select>
-                </v-flex>
-                <v-flex xs12 sm6>
-                  <v-select
-                    :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-                    label="Interests"
-                    multiple
-                    autocomplete
-                    chips
-                  ></v-select>
-                </v-flex>
-              </v-layout>
-            </v-container>
-            <small>*indicates required field</small>
-          </v-card-text>
+          <hr />
+          <pesto v-bind:assessment="metassessment"></pesto>
+
+          <v-list >
+              <v-list-tile>
+                <v-list-tile-content>Name:    {{metassessment.name}}</v-list-tile-content>
+                
+              </v-list-tile>
+              <v-list-tile>
+                <v-list-tile-content>Status:    {{metassessment.status}}</v-list-tile-content>
+              </v-list-tile>
+              <v-list-tile>
+                <v-list-tile-content>Date Assessed:   {{shortdate(metassessment.assessed)}}</v-list-tile-content>
+              </v-list-tile>
+              <v-list-tile>
+                <v-list-tile-content>Achieved:    {{metassessment.acheived}}</v-list-tile-content>
+              </v-list-tile>
+              <v-list-tile>
+                <v-list-tile-content>Current:   {{metassessment.current}}</v-list-tile-content>
+              </v-list-tile>
+              <v-list-tile>
+                <v-list-tile-content>Next:    {{metassessment.next}}</v-list-tile-content>
+              </v-list-tile>
+          </v-list>          
+
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="blue darken-1" flat @click.onclick="met = false">Close</v-btn>
-            <v-btn color="blue darken-1" flat @click.native="met = false">Save</v-btn>
           </v-card-actions>
         </v-card>
 

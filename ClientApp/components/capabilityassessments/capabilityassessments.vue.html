@@ -10,23 +10,22 @@
                                     <v-toolbar-side-icon></v-toolbar-side-icon>
                                     <v-toolbar-title>Capabilities</v-toolbar-title>
                                     <v-spacer></v-spacer>
-
                                 </v-toolbar>
                                 <v-list two-line subheader>
-                                    <v-list-group v-model="capability.active" v-for="capability in capabilities" :key="capability.name" prepend-icon="folder" color="green">
-                                        <v-list-tile slot="activator">
+                                    <v-list-group v-for="(capability,index) in capabilities" :key="capability.name" prepend-icon="folder">
+                                        <v-list-tile slot="activator" @click.native="currentcapability=index">
                                             <v-list-tile-content>
-                                                <v-list-tile-title>{{ capability.name }}</v-list-tile-title>
-                                                <v-list-tile-sub-title>{{capability.assessed}}</v-list-tile-sub-title>
+                                                <v-list-tile-title>{{capability.description === "NULL" ? "": capability.description+" : "}}{{capability.abbreviation}}</v-list-tile-title>
+                                                <v-list-tile-sub-title>Date assessed: {{shortdate(capability.assessed)}}</v-list-tile-sub-title>
                                             </v-list-tile-content>
                                         </v-list-tile>
                                         <v-list-tile v-for="met in capability.metAssessments" :key="met.abbreviation" @click="">
                                             <v-list-tile-content>
-                                                <v-list-tile-title>{{ met.name }}</v-list-tile-title>
-                                                <v-list-tile-sub-title>met.assessmentDate</v-list-tile-sub-title>
+                                                <v-list-tile-title>{{met.description === "NULL" ? "": met.description+" : "}}{{met.abbreviation}}</v-list-tile-title>
+                                                <v-list-tile-sub-title>Date assessed: {{shortdate(met.assessed)}}</v-list-tile-sub-title>
                                             </v-list-tile-content>
                                             <v-list-tile-action>
-                                                <met></met>
+                                                <met v-bind:metassessment="met"></met>
                                             </v-list-tile-action>
                                         </v-list-tile>
                                     </v-list-group>
@@ -38,53 +37,57 @@
 
                     <div id="DetailsContentSectionRight" class="col-sm-8">
                         <div id="DetailsPesto" class="row">
-                            <pesto></pesto>
+                            <pesto v-bind:assessment="capabilities[currentcapability]"></pesto>
                         </div>
-
+ 
                         <hr />
-
+                        
                         <div id="MicroDetails" class="row">
-                            <div class="col-sm-3">
+                                <div id="Capability Name" class="col-sm-3">
+                                        <strong>Name:</strong>
+                                        <span>{{capabilities[currentcapability].name}}</span>                                
+                                </div>
+                                 <div class="col-sm-3">
                                 <strong>Capability:</strong>
-                                <span>AAW - Anti-Air Warfare</span>
+                                <span>{{capabilities[currentcapability].description === "NULL" ? "": capabilities[currentcapability].description+" : "}}{{capabilities[currentcapability].abbreviation}}</span>
                             </div>
                             <div class="col-sm-3">
                                 <strong>Status:</strong>
-                                <span>Approved</span>
+                                <span>{{capabilities[currentcapability].status}}</span>
                             </div>
                             <div class="col-sm-3">
                                 <strong>Date Assessed:</strong>
-                                <span>26-Jan-2018</span>
+                                <span>{{shortdate(capabilities[currentcapability].assessed)}}</span>
                             </div>
                             <div class="col-sm-3">
                                 <strong>Standards Achieved:</strong>
-                                <span>7/8</span>
+                                <span>{{capabilities[currentcapability].achieved}}</span>
                             </div>
                         </div>
                         <hr />
 
-                        <div id="Ratings" class="row">
-                            <div id="CurrentRating" class="col-sm-6">
-                                <h4>
-                                    <strong>Current Rating</strong>
-                                </h4>
-                                <v-btn-toggle v-model="current">
-                                    <v-btn flat dark color="success">Yes</v-btn>
-                                    <v-btn flat dark color="warning">Qualified</v-btn>
-                                    <v-btn flat dark color="error">No</v-btn>
-                                </v-btn-toggle>
-                            </div>
-                            <div id="NextRating" class="col-sm-6">
-                                <h4>
-                                    <strong>Next Rating</strong>
-                                </h4>
-                                <v-btn-toggle v-model="current">
-                                    <v-btn flat dark color="success">Yes</v-btn>
-                                    <v-btn flat dark color="warning">Qualified</v-btn>
-                                    <v-btn flat dark color="error">No</v-btn>
-                                </v-btn-toggle>
-                            </div>
-                        </div>
+                        <v-container grid-list-md text-xs-center>
+                            <v-layout row wrap>
+                                <v-flex xs6>
+
+                                    <h4>Current Rating</h4>
+                                    <v-btn-toggle   v-model="capabilities[currentcapability].current">
+                                            <v-btn    color="success">Yes</v-btn>
+                                            <v-btn    color="warning">Qualified</v-btn>
+                                            <v-btn    color="error">No</v-btn>
+                                        </v-btn-toggle>
+                                    </v-flex>
+                                <v-flex xs6>
+                                    <h4>Next Rating</h4>
+                                    <v-btn-toggle   v-model="capabilities[currentcapability].next">
+                                        <v-btn    color="success">Yes</v-btn>
+                                        <v-btn    color="warning">Qualified</v-btn>
+                                        <v-btn    color="error">No</v-btn>
+                                    </v-btn-toggle>
+
+                                </v-flex>
+                            </v-layout>
+                        </v-container>
                         <hr />
 
                         <div class="panel-group" id="accordion">
@@ -281,7 +284,7 @@
             </div>
         </div>
     </div>
-   
+
 </template>
 
 

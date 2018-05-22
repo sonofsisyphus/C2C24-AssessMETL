@@ -9,7 +9,7 @@ interface Unit {
 interface Met {
     abbreviation: string;
     name: string;
-    assessmentDate: Date;
+    assessed: Date;
 }
 interface Capabilities {
     description: string;
@@ -44,18 +44,20 @@ interface Capabilities {
 
 export default class CapabilityAssessmentsComponent extends Vue {
     capabilities: Capabilities[] = [];
+    currentcapability:Number = 0;
+    next: Number = 0;
 
+    
     mounted() {
  
         fetch('/api/Assessment/CapabilityAssessments')
             .then(response => response.json() as Promise<Capabilities[]>)
             .then(data => { this.capabilities = data; });
     }
-    get overall() {
-        //return Math.round((this.personnel + this.equipment + this.supply + this.training + this.ordnance + this.facilities) / 6);
-        return 100;
+    shortdate(d:Date)
+    {
+            return d.toString().substring(0,10);
     }
-
     chipColor(val: number) {
         var col = "red"
         if (val > 80) {

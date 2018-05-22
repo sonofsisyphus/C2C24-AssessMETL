@@ -7,37 +7,54 @@ interface pillar {
     value: number;
     color: string;
 }
+interface pillarvalues {
+    personnel: number;
+    equipment: number;
+    supply: number;
+    training: number;
+    ordnance: number;
+    facilities: number;
+    overall: number;
 
+}
 
-@Component
+interface Assessment {
+    description: string;
+    abbreviation: string;
+    name: string;
+    status: string;
+    assessed: Date;
+    achieved: string;
+    current: string;
+    next: string;
+    personnel: number;
+    equipment: number;
+    supply: number;
+    training: number;
+    ordnance: number;
+    overall: number;
+    active: boolean;
+}
+@Component({
+    props:{
+        assessment: Object
+    }
+})
+
 export default class PestoComponent extends Vue {
+    assessment: Assessment ;
     pillars: pillar[] = [];
-    personnel: number = 0;
-    equipment: number = 0;
-    supply: number = 0;
-    training: number = 0;
-    ordnance: number = 0;
-    facilities: number = 0;
     mounted() {
         this.pillars = [
-            { id: 1, name: "Personnel", value: 20, color: "red" },
-            { id: 2, name: "Equipment ", value: 35, color: "red" },
-            { id: 3, name: "Supply ", value: 85, color: "green" },
-            { id: 4, name: "Training ", value: 95, color: "green" },
-            { id: 5, name: "Ordnance ", value: 75, color: "yellow" },
-            { id: 6, name: "Overall ", value: 55, color: "yellow" }
+            { id: 1, name: "Personnel", value: this.assessment.personnel, color: "red" },
+            { id: 2, name: "Equipment ", value: this.assessment.equipment, color: "red" },
+            { id: 3, name: "Supply ", value: this.assessment.supply, color: "green" },
+            { id: 4, name: "Training ", value: this.assessment.training, color: "green" },
+            { id: 5, name: "Ordnance ", value: this.assessment.ordnance, color: "yellow" },
+            { id: 6, name: "Overall ", value: this.assessment.overall, color: "yellow" }
         ]
-        this.personnel = 20;
-        this.equipment = 35;
-        this.supply = 85;
-        this.training = 95;
-        this.ordnance = 75;
-        this.facilities = 95;
     }
-    get overall(){
-         return Math.round((this.personnel + this.equipment + this.supply + this.training + this.ordnance + this.facilities) / 6);
-    }
-    
+    updatepillars(){}
         chipColor(val: number){
             var col = "red"
             if (val > 80) {
